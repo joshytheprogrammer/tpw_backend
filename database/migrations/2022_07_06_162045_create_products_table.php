@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->string('id')->default(bin2hex(random_bytes(8)));
+            $table->string('id')->primary();
             $table->string('thumbnail')->comment('image link');
             $table->string('name')->comment('size+layers+type+features'); 
             $table->json('price')->comment('lowest - highest');
