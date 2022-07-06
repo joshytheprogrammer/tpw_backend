@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('thumbnail'); // size+layers+type+features
-            $table->string('name'); 
-            $table->json('price');
+            $table->primary('id')->default(substr(md5(microtime()), 0, 8));
+            $table->string('thumbnail')->comment('image link');
+            $table->string('name')->comment('size+layers+type+features'); 
+            $table->json('price')->comment('lowest - highest');
             $table->timestamps();
         });
     }
