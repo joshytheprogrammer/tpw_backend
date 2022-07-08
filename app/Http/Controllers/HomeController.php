@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     //
     public function recommended() {
-        $products = Product::select(['id', 'thumbnail', 'name', 'price'])->orderBy('created_at', 'desc')->get();
+        $products = Product::select(['_id', 'thumbnail', 'name', 'price'])->orderBy('created_at', 'desc')->get();
 
         return new ProductsResource($products);
     }

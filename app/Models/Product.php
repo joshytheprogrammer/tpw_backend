@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    private $id;
+    private $_id;
+    private $thumbnail;
+    private $name;
+    private $price;
 }
