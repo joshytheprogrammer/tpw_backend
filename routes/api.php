@@ -15,4 +15,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/recommended', [HomeController::class, 'recommended']);
+Route::prefix('home')->group(function () {
+  Route::get('/recommended', [HomeController::class, 'recommended']);
+});
