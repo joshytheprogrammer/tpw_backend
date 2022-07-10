@@ -33,7 +33,7 @@ class CategoriesSeeder extends Seeder
                 'id' => rand(0, 20),
                 'thumbnail' => 'https://images.unsplash.com/photo-1623428454614-abaf00244e52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
                 'name' => 'Wedding Cakes',
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
             ]
         ]);
     }
