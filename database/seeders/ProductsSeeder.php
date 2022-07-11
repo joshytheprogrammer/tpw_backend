@@ -34,24 +34,24 @@ class ProductsSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
             [
-                '_id' => substr(bin2hex(random_bytes(32)), 0, 8),
-                '_slug' => 'single-layer-10-inch-butter-cream-cake',
+                '_id' => 'reft45th',
+                '_slug' => 'single-layer-10-inch-butter-cream-cake-reft45th',
                 'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1649163828/tec/products/IMG_6212_leid3k.jpg', 
                 'name' => 'Single Layer 10 inch Butter Cream Cake',
                 'price' => json_encode(["lowest" => "25000", "highest" => "30000"]),
                 'created_at' => Carbon::now()
             ],
             [
-                '_id' => substr(bin2hex(random_bytes(32)), 0, 8),
-                '_slug' => 'butter-cream-cake-with-chocolate-drip',
+                '_id' => 'f5643g0b',
+                '_slug' => 'butter-cream-cake-with-chocolate-drip-f5643g0b',
                 'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1649158052/tec/products/signal-2022-04-05-122625_001_zrzlp3.jpg', 
                 'name' => 'Butter Cream Cake With Chocolate Drip',
                 'price' => json_encode(["lowest" => "12000", "highest" => "19000"]),
                 'created_at' => Carbon::now()
             ],
             [
-                '_id' => substr(bin2hex(random_bytes(32)), 0, 8),
-                '_slug' => 'simple-two-tier-wedding-cake',
+                '_id' => 'fre456ty',
+                '_slug' => 'simple-two-tier-wedding-cake-fre456ty',
                 'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1650224468/tec/products/enhanced_image_1_nxnoxo.jpg', 
                 'name' => 'Simple Two Tier Wedding Cake',
                 'price' => json_encode(["lowest" => "50000", "highest" => "70000"]),
