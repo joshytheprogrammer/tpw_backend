@@ -11,6 +11,7 @@ class ProductsController extends Controller
 
     public function show($slug) {
         $product = Product::select(['thumbnail', 'name', 'price'])->where('_slug', 'like', '%'.$slug.'%')->get();
+        
         return new ProductsResource($product);
     }
 
