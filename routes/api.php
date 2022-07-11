@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +16,9 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::prefix('home')->group(function () {
-  Route::get('/recommended', [HomeController::class, 'recommended']);
+  Route::get('/recommended', [ProductsController::class, 'recommended']);
+});
+
+Route::prefix('shop')->group(function () {
+  Route::get('/{slug}', [ProductController::class, '']);
 });
