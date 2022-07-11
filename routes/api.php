@@ -20,5 +20,5 @@ Route::prefix('home')->group(function () {
 });
 
 Route::prefix('shop')->group(function () {
-  Route::get('/{slug}', [ProductController::class, '']);
+  Route::get('/{slug}', [ProductsController::class, 'show']);
 });
