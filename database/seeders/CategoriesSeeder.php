@@ -18,21 +18,39 @@ class CategoriesSeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'id' => rand(0, 20),
+                'id' => rand(0, 9999999),
                 'thumbnail' => 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
                 'name' => 'Chocolate Cakes',
                 'created_at' => Carbon::now()
             ],
             [
-                'id' => rand(0, 20),
-                'thumbnail' => 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+                'id' => rand(0, 9999999),
+                'thumbnail' => 'https://images.unsplash.com/photo-1571622840901-92ae138bd36e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
                 'name' => 'Birthday Cakes',
                 'created_at' => Carbon::now()
             ],
             [
-                'id' => rand(0, 20),
+                'id' => rand(0, 9999999),
                 'thumbnail' => 'https://images.unsplash.com/photo-1623428454614-abaf00244e52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
                 'name' => 'Wedding Cakes',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'id' => rand(0, 9999999),
+                'thumbnail' => 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+                'name' => 'Cup Cakes',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'id' => rand(0, 9999999),
+                'thumbnail' => 'https://images.unsplash.com/photo-1543512601-f0b56be2147e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGRvdWdobnV0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=720&q=60',
+                'name' => 'Doughnuts',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'id' => rand(0, 9999999),
+                'thumbnail' => 'https://images.unsplash.com/photo-1629324482344-58ac79e26b06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+                'name' => 'Cookies',
                 'created_at' => Carbon::now(),
             ]
         ]);
