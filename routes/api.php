@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\ProductsController;
 
 Route::prefix('home')->group(function () {
   Route::get('/recommended', [ProductsController::class, 'recommended']);
+  Route::get('/categories', [CategoriesController::class, 'popular']);
 });
 
 Route::prefix('shop')->group(function () {
