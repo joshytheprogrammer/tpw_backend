@@ -27,5 +27,5 @@ Route::prefix('shop')->group(function () {
 });
 
 Route::prefix('config')->group(function () {
-  Route::get('/getFormat', [ConfigController::class, 'getFormat']); // Get the default original size in inches and type of the product.
+  Route::get('/getFormat/{id}', [ConfigController::class, 'getFormat']); // Get the default original size in inches and type of the product.
 });

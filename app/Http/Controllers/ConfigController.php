@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Config;
 
 class ConfigController extends Controller
 {
-    public function getFormat() {
-        
+    public function getFormat($id) {
+        $format = Config::select(['format'])->where('product_id', 'like', '%'.$id.'%')->get();
+        return $format;
     }
 }
