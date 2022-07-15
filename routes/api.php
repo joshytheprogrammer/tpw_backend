@@ -28,4 +28,5 @@ Route::prefix('shop')->group(function () {
 
 Route::prefix('config')->group(function () {
   Route::get('/getFormat/{id}', [ConfigController::class, 'getFormat']); // Get the default original size in inches and type of the product.
+  Route::post('/getCost', [ConfigController::class, 'getCost']);
 });
