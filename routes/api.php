@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,5 @@ Route::prefix('shop')->group(function () {
 });
 
 Route::prefix('config')->group(function () {
-  Route::get('/format');
+  Route::get('/getFormat', [ConfigController::class, 'getFormat']); // Get the default original size in inches and type of the product.
 });
