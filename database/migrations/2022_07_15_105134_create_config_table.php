@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->id();
+            $table->string('product_id');
+            $table->json('format')->comment('size, type');
+            $table->string('base_price');
             $table->timestamps();
         });
     }
