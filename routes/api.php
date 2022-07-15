@@ -24,3 +24,7 @@ Route::prefix('home')->group(function () {
 Route::prefix('shop')->group(function () {
   Route::get('/{slug}', [ProductsController::class, 'show']);
 });
+
+Route::prefix('config')->group(function () {
+  Route::get('/format');
+});
