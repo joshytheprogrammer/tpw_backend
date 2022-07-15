@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('_id');
             $table->string('_slug');
             $table->string('thumbnail')->comment('image link');
-            $table->string('name')->comment('size+layers+type+features'); 
+            $table->string('name')->comment('size+layers+body-decoration+features'); 
             $table->json('price')->comment('lowest - highest');
             $table->timestamps();
         });
