@@ -21,6 +21,7 @@ class ConfigController extends Controller
         $size = $request['size'];
 
         $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
+        
         $base_price = $config->base_price;
 
         $price = $base_price + $this->getTypeCost($type) + $this->getSizeCost($size);
