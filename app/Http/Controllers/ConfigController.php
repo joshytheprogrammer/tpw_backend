@@ -23,6 +23,7 @@ class ConfigController extends Controller
         $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
         
         $base_price = $config->base_price;
+        // 7000
 
         $price = $base_price + $this->getTypeCost($type) + $this->getSizeCost($size);
 
@@ -30,30 +31,30 @@ class ConfigController extends Controller
     }
 
     protected function getSizeCost($size) {
-        // 10 = 2500, 12 = 5000, 14 = 10000
+        // 10 = 3500, 12 = 5000, 14 = 8000
 
         if($size == 8) {
             return 0;
         }else if($size == 10) {
-            return 2500;
+            return 3500; // We make 500
         }else if($size == 12) {
-            return 5000;
+            return 5000; // We make 1000
         }else if($size == 14) {
-            return 10000;
+            return 8000; // We make 2000
         }
         
     }
 
     protected function getTypeCost($type) {
-        // cc = 2500, fc = 5000, rv = 7500
+        // cc = 3000, fc = 4000, rv = 2500
         if($type == "sc") {
             return 0;
-        }else if($type == "cc") {
-            return 2500;
-        }else if($type == "fc") {
-            return 5000;
         }else if($type == "rv") {
-            return 7500;
+            return 3000; // we make 500
+        }else if($type == "cc") {
+            return 5000; // We make 2000
+        }else if($type == "fc") {
+            return 7000; // We make 3000
         }
     }
 }
