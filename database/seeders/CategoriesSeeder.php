@@ -52,6 +52,12 @@ class CategoriesSeeder extends Seeder
                 'thumbnail' => 'https://images.unsplash.com/photo-1629324482344-58ac79e26b06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
                 'name' => 'Cookies',
                 'created_at' => Carbon::now(),
+            ],
+            [
+                'id' => rand(0, 9999999),
+                'thumbnail' => 'https://images.unsplash.com/photo-1621303838226-5dc7130d5e19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+                'name' => 'Red velvet cakes',
+                'created_at' => Carbon::now(),
             ]
         ]);
     }
