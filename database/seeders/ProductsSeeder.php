@@ -20,7 +20,7 @@ class ProductsSeeder extends Seeder
             [
                 '_id' => 'gwer435t',
                 '_slug' => '10-inch-double-layer-whipped-cream-cake-with-chocolates-on-top-gwer435t',
-                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1650226544/tec/products/edited_image_with_label_vrbcdx.png', 
+                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1658826487/tec/products/edited_image_with_label_vrbcdx-removebg-preview_in8nuc.png', 
                 'name' => '10 inch Double Layer Whipped Cream Cake with chocolates on top',
                 'price' => json_encode(["lowest" => "20500", "highest" => "40000"]),
                 'created_at' => Carbon::now()
@@ -28,7 +28,7 @@ class ProductsSeeder extends Seeder
             [
                 '_id' => 'flr34tnb',
                 '_slug' => '10-inch-double-layer-butter-cream-cake-with-gold-coins-flr34tnb',
-                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1649158427/tec/products/1D22D433-FA9A-43A8-B46B-7DB3715FE0C6_pv1wsw.jpg', 
+                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1658826830/tec/products/1D22D433-FA9A-43A8-B46B-7DB3715FE0C6_pv1wsw-removebg-preview_kexbzd.png', 
                 'name' => '10 inch Double Layer Butter Cream Cake with Gold Coins',
                 'price' => json_encode(["lowest" => "14000", "highest" => "35000"]),
                 'created_at' => Carbon::now()
@@ -36,7 +36,7 @@ class ProductsSeeder extends Seeder
             [
                 '_id' => 'reft45th',
                 '_slug' => '10-inch-single-layer-butter-cream-cake-with-spiderman-topping-reft45th',
-                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1649163828/tec/products/IMG_6212_leid3k.jpg', 
+                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1658826773/tec/products/IMG_6212_leid3k-removebg-preview_cpn0sl.png', 
                 'name' => '10 inch Single layer Butter Cream Cake with Spiderman topping',
                 'price' => json_encode(["lowest" => "13500", "highest" => "32000"]),
                 'created_at' => Carbon::now()
@@ -44,7 +44,7 @@ class ProductsSeeder extends Seeder
             [
                 '_id' => 'f5643g0b',
                 '_slug' => '10-inch-double-layer-butter-cream-cake-with-chocolate-drip-and-gold-coins-f5643g0b',
-                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1649158052/tec/products/signal-2022-04-05-122625_001_zrzlp3.jpg', 
+                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1658826345/tec/products/signal-2022-04-05-122625_001_zrzlp3-removebg-preview_d7zujj.png', 
                 'name' => '10 inch Double layer butter cream cake with chocolate drip and gold coins',
                 'price' => json_encode(["lowest" => "16000", "highest" => "35000"]),
                 'created_at' => Carbon::now()
@@ -52,7 +52,7 @@ class ProductsSeeder extends Seeder
             [
                 '_id' => 'fre456ty',
                 '_slug' => 'simple-two-tier-wedding-cake-fre456ty',
-                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1650224468/tec/products/enhanced_image_1_nxnoxo.jpg', 
+                'thumbnail' => 'https://res.cloudinary.com/dsgvwxygr/image/upload/v1658826644/tec/products/enhanced_image_1_nxnoxo-removebg-preview_aoawee.png', 
                 'name' => 'Simple Two Tier Wedding Cake',
                 'price' => json_encode(["lowest" => "50000", "highest" => "70000"]),
                 'created_at' => Carbon::now()
