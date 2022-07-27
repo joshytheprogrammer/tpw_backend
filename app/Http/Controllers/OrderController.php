@@ -19,15 +19,9 @@ class OrderController extends Controller
             $fulfillment = $order["fulfillment"];
 
         # Configurations
-            # Get product ID's
+            # Get product ID's and product details
                 $product_id = array(); // Array of product id's
 
-                // Loops through products to fetch its id
-                foreach ($products as $product) {
-                    array_push($product_id, $product["id"]);
-                }
-
-            # Get product details
                 $product_d = array();
 
                 // Loops through products to fetch product_details
@@ -38,8 +32,12 @@ class OrderController extends Controller
                         "size" => $product["size"],
                         "type" => $product["type"],
                     ];
+
                     // Push data to product_details array
                     array_push($product_d, $data);
+
+                    // Push only id's to product_id array
+                    array_push($product_id, $product["id"]);
                 }
 
         # Verify price
@@ -50,9 +48,7 @@ class OrderController extends Controller
                 return response("price verification failed", 412);
             }
 
-        
         # Insert order into "orders" table
-            // Seperate product id's (for loop)
             // Status -> awaiting_payment
             // Fulfillment -> pickup
             // Mode -> online
