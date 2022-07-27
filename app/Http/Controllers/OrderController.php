@@ -8,7 +8,9 @@ class OrderController extends Controller
 {
     public function handleOrder(Request $request) {
         // Sort request data
-        
+        $order = $request->order;
+        // $request->order["products"][0]["size"
+
         // Verify price 
             // [return "price verification failed" if failed.]
         // Insert Order into database
@@ -23,6 +25,6 @@ class OrderController extends Controller
         // Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
 
-        return $request->order;
+        return $order;
     }
 }
