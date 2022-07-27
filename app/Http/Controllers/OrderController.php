@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function handleOrder(Request $request) {
-        // Sort request data
+        # Sort request data
         $order = $request->order;
 
         $phone = $order["phone"];
@@ -15,9 +15,18 @@ class OrderController extends Controller
         $amount = $order["amount"];
         $p_m = $order["payment_mode"];
         $products = $order["products"];
-        $fulfillment = $order["pickup"];
+        $fulfillment = $order["fulfillment"];
 
-        // Verify price 
+        # Verify price 
+        $product_id = array(); // Array of product id's
+
+        # Loops through products to fetch its id
+        foreach ($products as $product) {
+            array_push($product_ids, $product["id"]);
+        }
+
+        $this->verifyPrice($amount, $product_id);
+
         
 
             // [return "price verification failed" if failed.]
@@ -38,8 +47,7 @@ class OrderController extends Controller
 
 
     protected function verifyPrice($amount, $id) {
-        // amount if the total price of the product
-        // id is an array of product id's
+        // amount if the total price of the product, id is an array of product id's
 
         // foreach
     }
