@@ -10,6 +10,10 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function handleOrder(Request $request) {
+        # Validate data
+            if(!$request->order) {
+                return response(['error' => 'Order not found'], 500);
+            }
         # Sort request data
             $order = $request->order;
 
