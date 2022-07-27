@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::prefix('config')->group(function () {
   Route::get('/getFormat/{id}', [ConfigController::class, 'getFormat']); // Get the default original size in inches and type of the product.
   Route::post('/getCost', [ConfigController::class, 'getCost']);
 });
+
+Route::post('/order', [OrderController::class, 'handleOrder']);
