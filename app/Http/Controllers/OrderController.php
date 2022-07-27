@@ -66,7 +66,7 @@ class OrderController extends Controller
             }
         # if payment_mode = offline
             if($p_m == "offline"){
-                return response("order_successful", 200);
+                return response("order_placed_successfully", 200);
             }
         
         # Insert individual products to product_orders table
@@ -94,10 +94,6 @@ class OrderController extends Controller
 
         # Return true if price is verified
         return true;
-    }
-
-    protected function order() {
-
     }
 
     protected function getCost($data) {
