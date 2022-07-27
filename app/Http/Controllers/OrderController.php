@@ -46,7 +46,7 @@ class OrderController extends Controller
 
             // Kill request if price verification fails
             if(!$verified) {
-                return response("price verification failed", 412);
+                return response(["error" => "price verification failed"], 412);
             }
 
         # Insert order into "orders" table
