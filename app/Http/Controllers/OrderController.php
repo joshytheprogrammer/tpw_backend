@@ -8,6 +8,9 @@ class OrderController extends Controller
 {
     public function handleOrder(Request $request) {
         // Sort request data
+        $request->validate([
+            
+        ]);
         // Verify price 
             // [return "price verification failed" if failed.]
         // Insert Order into database
@@ -21,8 +24,7 @@ class OrderController extends Controller
         // Create Laravel Jobs, queue
         // Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
-        
 
-
+        return "recieved";
     }
 }
