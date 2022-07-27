@@ -73,7 +73,7 @@ class OrderController extends Controller
 
             ProductOrders::dispatchAfterResponse($data);
 
-        // call payment api from frontend
+
         return response("order_placed_successfully", 200);
     }
 
