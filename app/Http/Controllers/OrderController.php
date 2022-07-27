@@ -52,7 +52,10 @@ class OrderController extends Controller
             }
 
         # Insert order into "orders" table
+            $order_id = bin2hex(random_bytes(8));
+
             $order = new Order;
+            $order->id = $order_id;
             $order->customer_phone = $phone;
             $order->products = json_encode($product_id);
             $order->amount = $amount;
@@ -63,7 +66,7 @@ class OrderController extends Controller
 
         # Insert individual products to table
             // Insert, [order_id, product_id, quantity, size, type, writing]
-            ProductOrders::dispatchAfterResponse();
+            // ProductOrders::dispatchAfterResponse();
 
         # if payment_mode = online
             if($p_m == "online"){
@@ -74,10 +77,6 @@ class OrderController extends Controller
             if($p_m == "offline"){
                 return response("order_placed_successfully", 200);
             }
-        
-
-    
-            // bin2hex(random_bytes(16))
     }
 
     protected function verifyPrice($amount, $product) {
