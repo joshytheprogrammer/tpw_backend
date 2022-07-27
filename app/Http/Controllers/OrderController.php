@@ -69,8 +69,7 @@ class OrderController extends Controller
                 "order_id" => $order_id,
                 "product_details" => $product_d,
             ];
-            return $data;
-            // ProductOrders::dispatch($data);
+            ProductOrders::dispatch($data);
         # if payment_mode = online
             if($p_m == "online"){
                 $url = '';  // Call pay function and return "url"

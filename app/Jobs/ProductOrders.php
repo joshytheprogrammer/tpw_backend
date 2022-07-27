@@ -41,12 +41,15 @@ class ProductOrders implements ShouldQueue
         $product_order = new $p_o;
 
         foreach ($data as $i) {
+            
             $product_order->order_id = $i["order_id"];
             $product_order->product_id = $i["product_details"]["product_id"];
             $product_order->quantity = 1;
             $product_order->cake_size = $i["product_details"]["size"];
             $product_order->cake_type = $i["product_details"]["type"];
             $product_order->writing = $i["product_details"]["writing"];
+
+            $product_order->save();
         }
 
     }
