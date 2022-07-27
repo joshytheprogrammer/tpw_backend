@@ -59,13 +59,15 @@ class OrderController extends Controller
             $order->fulfillment = $fulfillment;
             $order->save();
 
+        # if payment_mode = online
             if($p_m == "online"){
-                return response(["url" => ""], 200);
+                $url = '';  // Call pay function and return "url"
+                return response(["url" => $url], 200);
             }
-        // Mode -> online
-            // Call pay function and return payment link
-        // Mode -> offline
-            // return order_placed_successfully and proceed to 'order page'
+        # if payment_mode = offline
+            if($p_m == "offline"){
+                return response("order_successful", 200);
+            }
         
         # Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
