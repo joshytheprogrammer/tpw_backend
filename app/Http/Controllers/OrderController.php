@@ -51,17 +51,17 @@ class OrderController extends Controller
 
         # Insert order into "orders" table
             $order = new Order;
-            $order->products
-            $order->amount
-            $order->status
-            $order->payment_mode
-            $order->fulfillment
-            // Status -> awaiting_payment
-            // Fulfillment -> pickup
-            // Mode -> online
-                // Call pay function and return payment link
-            // Mode -> offline
-                // return order_placed_successfully and proceed to 'order page'
+            $order->customer_phone = $phone;
+            $order->products = $product_id;
+            $order->amount = $amount;
+            $order->status = $status;
+            $order->payment_mode = $p_m;
+            $order->fulfillment = $fulfillment;
+            $order->save();
+        // Mode -> online
+            // Call pay function and return payment link
+        // Mode -> offline
+            // return order_placed_successfully and proceed to 'order page'
         
         # Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
