@@ -17,6 +17,7 @@ class OrderController extends Controller
             }
         # Sort request data
             $order = $request->order;
+            
             try {
                 $phone = $order["phone"];
                 $status = $order["status"];
