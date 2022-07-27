@@ -52,12 +52,16 @@ class OrderController extends Controller
         # Insert order into "orders" table
             $order = new Order;
             $order->customer_phone = $phone;
-            $order->products = $product_id;
+            $order->products = json_encode($product_id);
             $order->amount = $amount;
             $order->status = $status;
             $order->payment_mode = $p_m;
             $order->fulfillment = $fulfillment;
             $order->save();
+
+            if($p_m == "online"){
+                return response(["url" => ""], 200);
+            }
         // Mode -> online
             // Call pay function and return payment link
         // Mode -> offline
