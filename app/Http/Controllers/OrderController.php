@@ -78,7 +78,7 @@ class OrderController extends Controller
             ProductOrders::dispatchAfterResponse($data);
 
 
-        return response("order_placed_successfully", 200);
+        return response(["message" => "order_placed_successfully"], 200);
     }
 
     protected function verifyPrice($amount, $product) {
