@@ -11,22 +11,17 @@ use Exception;
 class OrderController extends Controller
 {
     public function handleOrder(Request $request) {
-        # Validate data
-            if(!$request->order) {
-                return response(['error' => 'Order not found'], 500);
-            }
         # Sort request data
-            $order = $request->order;
-            
             try {
+                $order = $request->order;
                 $phone = $order["phone"];
-                $status = $order["status"];
+                $status = "awaiting_payment";
                 $amount = $order["amount"];
                 $p_m = $order["payment_mode"];
                 $products = $order["products"];
                 $fulfillment = $order["fulfillment"];
             } catch(Exception $e) {
-                return response(["error" => $e->getMessage()], 500);
+                return response(["error" => $e->getMessage()], 406);
             }
 
         # Configurations
@@ -57,7 +52,7 @@ class OrderController extends Controller
 
             // Kill request if price verification fails
             if(!$verified) {
-                return response(["error" => "price verification failed"], 412);
+                return response(["error" => "price verification failed"], 406);
             }
 
         # Insert order into "orders" table
