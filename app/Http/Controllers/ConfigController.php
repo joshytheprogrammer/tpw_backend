@@ -29,6 +29,23 @@ class ConfigController extends Controller
         return $price;
     }
 
+    public function verifyCost($data) {
+        $price = 0;
+
+        $product_id = $data['product_id'];
+        $type = $data['type'];
+        $size = $data['size'];
+
+        $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
+        
+        $base_price = $config->base_price;
+        // 7000
+
+        $price = $base_price + $this->getTypeCost($type) + $this->getSizeCost($size);
+
+        return $price;
+    }
+
     protected function getSizeCost($size) {
         // 10 = 3000, 12 = 4000, 14 = 6000
 
