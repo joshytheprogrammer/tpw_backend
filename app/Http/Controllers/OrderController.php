@@ -32,6 +32,7 @@ class OrderController extends Controller
                         "product_id" => $product["id"],
                         "size" => $product["size"],
                         "type" => $product["type"],
+                        "writing" => $product["writing"]
                     ];
 
                     // Push data to product_details array
