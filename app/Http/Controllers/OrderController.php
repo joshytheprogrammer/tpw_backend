@@ -20,17 +20,22 @@ class OrderController extends Controller
         # Verify price 
         $product_id = array(); // Array of product id's
 
-        # Loops through products to fetch its id
+        // Loops through products to fetch its id
         foreach ($products as $product) {
-            array_push($product_ids, $product["id"]);
+            array_push($product_id, $product["id"]);
         }
 
-        $this->verifyPrice($amount, $product_id);
+        // Verify Price
+        $verified = $this->verifyPrice($amount, $product_id);
 
-        
+        // Kill request if price verification fails
+        if(!$verified) {
+            return response("price verification failed", 412);
+        }
 
-            // [return "price verification failed" if failed.]
-        // Insert Order into database
+        return $verified;
+
+        # Insert order into "orders" table
             // Seperate product id's (for loop)
             // Status -> awaiting_payment
             // Fulfillment -> pickup
@@ -42,13 +47,16 @@ class OrderController extends Controller
         // Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
 
-        // return $amount;
     }
 
 
-    protected function verifyPrice($amount, $id) {
-        // amount if the total price of the product, id is an array of product id's
-
+    protected function verifyPrice($amount, $product) {
+        // Call the getCost function for each id 
         // foreach
+        return true;
+    }
+
+    protected function order() {
+
     }
 }
