@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_id')->unique();
+            $table->string('customer_phone')->unique();
             $table->json('products')->comment('A list of the id of the products ordered');
             $table->integer('amount');
             $table->string('status')->comment('the status of the order [awaiting_payment, pending, awaiting_delivery/pickup, successful or cancelled]');

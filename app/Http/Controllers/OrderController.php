@@ -50,6 +50,12 @@ class OrderController extends Controller
             }
 
         # Insert order into "orders" table
+            $order = new Order;
+            $order->products
+            $order->amount
+            $order->status
+            $order->payment_mode
+            $order->fulfillment
             // Status -> awaiting_payment
             // Fulfillment -> pickup
             // Mode -> online
