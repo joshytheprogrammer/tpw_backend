@@ -50,6 +50,7 @@ class OrderController extends Controller
                 return response("price verification failed", 412);
             }
 
+        
         # Insert order into "orders" table
             // Seperate product id's (for loop)
             // Status -> awaiting_payment
@@ -58,12 +59,11 @@ class OrderController extends Controller
                 // Call pay function and return payment link
             // Mode -> offline
                 // return order_placed_successfully and proceed to 'order page'
-        // Create Laravel Jobs, queue
-        // Insert individual products to product_orders table
+        
+        # Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
 
     }
-
 
     protected function verifyPrice($amount, $product) {
         # Set data
