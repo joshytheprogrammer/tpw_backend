@@ -13,14 +13,16 @@ class ProductOrders implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    private $data;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,8 +30,9 @@ class ProductOrders implements ShouldQueue
      *
      * @return void
      */
-    public function handle($data)
+    public function handle()
     {
+        $data = $this->data;
         
     }
 }

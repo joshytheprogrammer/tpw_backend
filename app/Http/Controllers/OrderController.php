@@ -65,9 +65,11 @@ class OrderController extends Controller
             $order->save();
 
         # Insert individual products to table
-            // Insert, [order_id, product_id, quantity, size, type, writing]
-            // ProductOrders::dispatchAfterResponse();
-
+            $data = [
+                "order_id" => $order_id,
+                "product_details" => $product_d,
+            ];
+            ProductOrders::dispatch($data);
         # if payment_mode = online
             if($p_m == "online"){
                 $url = '';  // Call pay function and return "url"
