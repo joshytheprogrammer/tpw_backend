@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProductOrders;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use App\Models\Order;
@@ -60,6 +61,10 @@ class OrderController extends Controller
             $order->fulfillment = $fulfillment;
             $order->save();
 
+        # Insert individual products to table
+            // Insert, [order_id, product_id, quantity, size, type, writing]
+            ProductOrders::dispatchAfterResponse();
+
         # if payment_mode = online
             if($p_m == "online"){
                 $url = '';  // Call pay function and return "url"
@@ -70,8 +75,8 @@ class OrderController extends Controller
                 return response("order_placed_successfully", 200);
             }
         
-        # Insert individual products to product_orders table
-            // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
+
+    
             // bin2hex(random_bytes(16))
     }
 
