@@ -6,6 +6,7 @@ use App\Jobs\ProductOrders;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use App\Models\Order;
+use Exception;
 
 class OrderController extends Controller
 {
@@ -16,13 +17,16 @@ class OrderController extends Controller
             }
         # Sort request data
             $order = $request->order;
-
-            $phone = $order["phone"];
-            $status = $order["status"];
-            $amount = $order["amount"];
-            $p_m = $order["payment_mode"];
-            $products = $order["products"];
-            $fulfillment = $order["fulfillment"];
+            try {
+                $phone = $order["phone"];
+                $status = $order["status"];
+                $amount = $order["amount"];
+                $p_m = $order["payment_mode"];
+                $products = $order["products"];
+                $fulfillment = $order["fulfillment"];
+            } catch(Exception $e) {
+                return response(["error" => $e->getMessage()], 500);
+            }
 
         # Configurations
             # Get product ID's and product details
