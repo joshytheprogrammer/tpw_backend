@@ -22,10 +22,9 @@ class ProductOrders implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($data, ProductOrder $p_o)
+    public function __construct($data)
     {
         $this->data = $data;
-        $this->p_o = $p_o;
     }
 
     /**
@@ -36,12 +35,10 @@ class ProductOrders implements ShouldQueue
     public function handle()
     {
         $data = $this->data;
-        $p_o = $this->p_o;
-
-        $product_order = new $p_o;
 
         foreach ($data as $i) {
-            
+            $product_order = new ProductOrder;
+
             $product_order->order_id = $i["order_id"];
             $product_order->product_id = $i["product_details"]["product_id"];
             $product_order->quantity = 1;
