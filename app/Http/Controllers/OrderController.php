@@ -72,7 +72,7 @@ class OrderController extends Controller
         
         # Insert individual products to product_orders table
             // Insert, [order_id, product_id, quantity, size, type, writing] (for loop)
-
+            // bin2hex(random_bytes(16))
     }
 
     protected function verifyPrice($amount, $product) {
