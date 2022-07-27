@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Config;
-use Illuminate\Support\Facades\Redis;
 
 class ConfigController extends Controller
 {
@@ -31,7 +30,7 @@ class ConfigController extends Controller
     }
 
     protected function getSizeCost($size) {
-        // 10 = 3500, 12 = 5000, 14 = 8000
+        // 10 = 3000, 12 = 4000, 14 = 6000
 
         if($size == 8) {
             return 0;
@@ -46,7 +45,7 @@ class ConfigController extends Controller
     }
 
     protected function getTypeCost($type) {
-        // cc = 3000, fc = 4000, rv = 2500
+        //  rv = 2500, cc = 3000, fc = 4000
         if($type == "sc") {
             return 0;
         }else if($type == "rv") {
