@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Models\Config;
 
 class OrderController extends Controller
 {
@@ -50,8 +50,6 @@ class OrderController extends Controller
                 return response("price verification failed", 412);
             }
 
-            return $verified;
-
         # Insert order into "orders" table
             // Seperate product id's (for loop)
             // Status -> awaiting_payment
@@ -69,20 +67,67 @@ class OrderController extends Controller
 
     protected function verifyPrice($amount, $product) {
         // Call the getCost function for each id 
-        $prices = array();
-        $url = 'http://127.0.0.1:8000/api/config/getCost/';
+        $tax = 12; 
+        $price = 0;
         
         foreach ($product as $item) {
-            
-            $price = Http::post($url, $item);
-
-            array_push($prices, $price);
+            $price = $price + $this->getCost($item);
         }
 
-        return $product;
+        $price = $price + ($price / 100) * $tax;
+
+        if(!($amount == $price)) {
+            return false;
+        }
+
+        return true;
     }
 
     protected function order() {
 
+    }
+
+    protected function getCost($data) {
+        $price = 0;
+
+        $product_id = $data['product_id'];
+        $type = $data['type'];
+        $size = $data['size'];
+
+        $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
+        
+        $base_price = $config->base_price;
+        // 7000
+
+        $price = $base_price + $this->getTypeCost($type) + $this->getSizeCost($size);
+
+        return $price;
+    }
+
+    protected function getSizeCost($size) {
+        // 10 = 3000, 12 = 4000, 14 = 6000
+
+        if($size == 8) {
+            return 0;
+        }else if($size == 10) {
+            return 3500; // We make 500
+        }else if($size == 12) {
+            return 5000; // We make 1000
+        }else if($size == 14) {
+            return 8000; // We make 2000
+        }
+    }
+
+    protected function getTypeCost($type) {
+        //  rv = 2500, cc = 3000, fc = 4000
+        if($type == "sc") {
+            return 0;
+        }else if($type == "rv") {
+            return 3000; // we make 500
+        }else if($type == "cc") {
+            return 5000; // We make 2000
+        }else if($type == "fc") {
+            return 7000; // We make 3000
+        }
     }
 }
