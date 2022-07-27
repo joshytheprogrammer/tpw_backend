@@ -41,7 +41,6 @@ class ConfigController extends Controller
         }else if($size == 14) {
             return 8000; // We make 2000
         }
-        
     }
 
     protected function getTypeCost($type) {

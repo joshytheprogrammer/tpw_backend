@@ -18,7 +18,7 @@ class OrderController extends Controller
         $fulfillment = $order["pickup"];
 
         // Verify price 
-
+        
 
             // [return "price verification failed" if failed.]
         // Insert Order into database
@@ -38,6 +38,9 @@ class OrderController extends Controller
 
 
     protected function verifyPrice($amount, $id) {
+        // amount if the total price of the product
+        // id is an array of product id's
 
+        // foreach
     }
 }
