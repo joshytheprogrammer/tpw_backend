@@ -24,7 +24,7 @@ class OrderController extends Controller
             # Get product ID's and product details
                 $product_id = array(); // Array of product id's
 
-                $product_d = array();
+                $product_d = array(); // Array of products ordered
 
                 // Loops through products to fetch product_details
                 foreach ($products as $product) {
@@ -52,6 +52,7 @@ class OrderController extends Controller
             }
 
         # Insert order into "orders" table
+            // Generate unique order_id
             $order_id = bin2hex(random_bytes(8));
 
             $order = new Order;
@@ -64,21 +65,16 @@ class OrderController extends Controller
             $order->fulfillment = $fulfillment;
             $order->save();
 
-        # Insert individual products to table
+        # Insert individual products to table after response...
             $data = [
                 "order_id" => $order_id,
                 "product_details" => $product_d,
             ];
+
             ProductOrders::dispatchAfterResponse($data);
-        # if payment_mode = online
-            if($p_m == "online"){
-                $url = '';  // Call pay function and return "url"
-                return response(["url" => $url], 200);
-            }
-        # if payment_mode = offline
-            if($p_m == "offline"){
-                return response("order_placed_successfully", 200);
-            }
+
+        // call payment api from frontend
+        return response("order_placed_successfully", 200);
     }
 
     protected function verifyPrice($amount, $product) {
