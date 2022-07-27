@@ -66,20 +66,24 @@ class OrderController extends Controller
 
 
     protected function verifyPrice($amount, $product) {
-        // Call the getCost function for each id 
+        # Set data
         $tax = 12; 
         $price = 0;
         
+        # Get the cost of each item
         foreach ($product as $item) {
             $price = $price + $this->getCost($item);
         }
 
+        # Add taxes to total cost
         $price = $price + ($price / 100) * $tax;
 
+        # Return false if amount and price don't match
         if(!($amount == $price)) {
             return false;
         }
 
+        # Return true if price is verified
         return true;
     }
 
