@@ -54,22 +54,22 @@ class OrderController extends Controller
         # Insert order into "orders" table
             $order_id = bin2hex(random_bytes(8));
 
-            $order = new Order;
-            $order->id = $order_id;
-            $order->customer_phone = $phone;
-            $order->products = json_encode($product_id);
-            $order->amount = $amount;
-            $order->status = $status;
-            $order->payment_mode = $p_m;
-            $order->fulfillment = $fulfillment;
-            $order->save();
+            // $order = new Order;
+            // $order->id = $order_id;
+            // $order->customer_phone = $phone;
+            // $order->products = json_encode($product_id);
+            // $order->amount = $amount;
+            // $order->status = $status;
+            // $order->payment_mode = $p_m;
+            // $order->fulfillment = $fulfillment;
+            // $order->save();
 
         # Insert individual products to table
             $data = [
                 "order_id" => $order_id,
                 "product_details" => $product_d,
             ];
-            ProductOrders::dispatch($data);
+            ProductOrders::dispatchAfterResponse($data);
         # if payment_mode = online
             if($p_m == "online"){
                 $url = '';  // Call pay function and return "url"
