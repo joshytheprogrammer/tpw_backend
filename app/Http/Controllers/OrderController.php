@@ -18,10 +18,10 @@ class OrderController extends Controller
                 $status = "awaiting_payment";
                 $amount = $order["amount"];
                 $p_m = $order["payment_mode"];
-                $products = $order["products"];
                 $fulfillment = $order["fulfillment"];
+                $products = $order["products"];
             } catch(Exception $e) {
-                return response(["error" => $e->getMessage()], 406);
+                return response(["error" => $e->getMessage()], 200);
             }
 
         # Configurations
@@ -52,7 +52,7 @@ class OrderController extends Controller
 
             // Kill request if price verification fails
             if(!$verified) {
-                return response(["error" => "price verification failed"], 406);
+                return response(["error" => "price verification failed"], 200);
             }
 
         # Verify phone
@@ -60,7 +60,7 @@ class OrderController extends Controller
             $verified = preg_match($match, $phone);
 
             if(!$verified) {
-                return response(["error" => "invalid phone number"], 406);
+                return response(["error" => "invalid phone number"], 200);
             }
 
         # Insert order into "orders" table
@@ -86,7 +86,7 @@ class OrderController extends Controller
             ProductOrders::dispatchAfterResponse($data);
 
 
-        return response(["message" => "order_placed_successfully"], 200);
+        return response(["message" => "Order placed_successfully"], 200);
     }
 
     protected function verifyPrice($amount, $product) {
