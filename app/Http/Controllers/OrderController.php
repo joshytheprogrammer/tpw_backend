@@ -55,6 +55,14 @@ class OrderController extends Controller
                 return response(["error" => "price verification failed"], 406);
             }
 
+        # Verify phone
+            $match = "/^([0]{1})[0-9]{10}$/";
+            $verified = preg_match($match, $phone);
+
+            if(!$verified) {
+                return response(["error" => "invalid phone number"], 406);
+            }
+
         # Insert order into "orders" table
             // Generate unique order_id
             $order_id = bin2hex(random_bytes(8));
