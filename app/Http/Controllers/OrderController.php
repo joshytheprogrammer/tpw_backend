@@ -95,19 +95,19 @@ class OrderController extends Controller
             $reference = Paystack::generateReference();
 
             $data = [
-                "email" => "customer@gmail.com",
+                "email" => "$phone@gmail.com",
                 "amount" => ($amount * 100), // amount required in kobo
                 "reference" => $reference,
                 "orderID" => $order_id,
             ];
             
-            $url = $this->getPaymentUrl($data)["data"]["authorization_url"];
+            $url = $this->getPaymentUrl($data);
 
         return response(["url" => $url], 200);
     }
 
     protected function getPaymentUrl($data) {
-        return Paystack::transaction()->initialize($data)->response();
+        return Paystack::transaction()->initialize($data)->authorizationURL();
     }
 
     protected function verifyPrice($amount, $product) {
