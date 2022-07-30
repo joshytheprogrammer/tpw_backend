@@ -6,6 +6,7 @@ use App\Jobs\ProductOrders;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use App\Models\Order;
+use Iamolayemi\Paystack\Facades\Paystack;
 use Exception;
 
 class OrderController extends Controller
@@ -16,7 +17,7 @@ class OrderController extends Controller
                 $order = $request->order;
                 $phone = $order["phone"];
                 $status = "awaiting_payment";
-                $amount = $order["amount"];
+                $amount = intval($order["amount"]);
                 $p_m = $order["payment_mode"];
                 $fulfillment = $order["fulfillment"];
                 $products = $order["products"];
@@ -86,7 +87,30 @@ class OrderController extends Controller
             ProductOrders::dispatchAfterResponse($data);
 
 
-        return response(["message" => "Order placed_successfully"], 200);
+        # Get payment URL
+            if (!($p_m == "online")) {
+                return response(["message" => "Order placed_successfully"], 200);
+            }
+
+            $reference = Paystack::generateReference();
+
+            return $reference;
+
+            $data = [
+                "email" => "customer@gmail.com",
+                "amount" => ($amount * 100), // amount required in kobo
+                "reference" => $reference,
+                "orderID" => $order_id,
+            ];
+
+            // return $data;
+            $url = $this->getPaymentUrl($data);
+
+        return response(["url" => $url], 200);
+    }
+
+    protected function getPaymentUrl($data) {
+        return Paystack::transaction()->initialize($data)->response('data.authorization_url');
     }
 
     protected function verifyPrice($amount, $product) {
