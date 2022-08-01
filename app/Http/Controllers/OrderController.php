@@ -113,7 +113,8 @@ class OrderController extends Controller
     }
 
     public function getProducts($id) {
-        $products = ProductOrder::find($id);
+        $products = ProductOrder::where('order_id', 'like', '%'.$id.'%')->get();
+        
         return $products;
     }
 
