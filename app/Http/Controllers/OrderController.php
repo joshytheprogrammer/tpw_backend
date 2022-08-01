@@ -111,8 +111,8 @@ class OrderController extends Controller
         return $order;
     }
 
-    public function getProducts(Request $request) {
-        
+    public function getProducts($id) {
+        return $id;
     }
 
     public function getProduct(Request $request) {
