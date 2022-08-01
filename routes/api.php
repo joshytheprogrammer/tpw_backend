@@ -36,4 +36,6 @@ Route::prefix('config')->group(function () {
 Route::prefix('order')->group(function () {
   Route::post('/', [OrderController::class, 'handleOrder']);
   Route::get('/{id}', [OrderController::class, 'getOrder']);
+  Route::post('/getProducts', [OrderController::class, '
+  getProducts']);
 });

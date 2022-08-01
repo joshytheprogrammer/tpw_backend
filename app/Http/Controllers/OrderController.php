@@ -115,6 +115,10 @@ class OrderController extends Controller
 
     }
 
+    public function getProduct(Request $request) {
+        
+    }
+
     protected function getPaymentUrl($data) {
         return Paystack::transaction()->initialize($data)->authorizationURL();
     }
