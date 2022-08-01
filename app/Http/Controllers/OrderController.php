@@ -103,11 +103,12 @@ class OrderController extends Controller
             
             $url = $this->getPaymentUrl($data);
 
-        return response(["url" => $url], 200);
+        return response(["order_id" => $order_id ,"url" => $url], 200);
     }
 
     public function getOrder($id) {
-        
+        $order = Order::find($id);
+        return $order;
     }
 
     protected function getPaymentUrl($data) {
