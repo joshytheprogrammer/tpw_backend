@@ -112,11 +112,11 @@ class OrderController extends Controller
     }
 
     public function getProducts(Request $request) {
-
+        
     }
 
     public function getProduct(Request $request) {
-        
+
     }
 
     protected function getPaymentUrl($data) {
