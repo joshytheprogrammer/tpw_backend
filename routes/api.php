@@ -33,4 +33,7 @@ Route::prefix('config')->group(function () {
   Route::post('/verifyCost', [ConfigController::class, 'getCost']);
 });
 
-Route::post('/order', [OrderController::class, 'handleOrder']);
+Route::prefix('order')->group(function () {
+  Route::post('/', [OrderController::class, 'handleOrder']);
+  Route::get('/{id}', [OrderController::class, 'getOrder']);
+});
