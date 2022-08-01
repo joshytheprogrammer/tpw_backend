@@ -113,13 +113,13 @@ class OrderController extends Controller
     }
 
     public function getProducts($id) {
-        $products = ProductOrder::where('order_id', 'like', '%'.$id.'%')->get();
-        
+        $products = ProductOrder::select(['id', 'product_id', 'cake_size', 'cake_type', 'writing'])->where('order_id', 'like', '%'.$id.'%')->get();
+
         return $products;
     }
 
     public function getProduct(Request $request) {
-
+        
     }
 
     protected function getPaymentUrl($data) {
