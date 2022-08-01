@@ -6,6 +6,7 @@ use App\Jobs\ProductOrders;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use App\Models\Order;
+use App\Models\ProductOrder;
 use Iamolayemi\Paystack\Facades\Paystack;
 use Exception;
 
@@ -112,7 +113,8 @@ class OrderController extends Controller
     }
 
     public function getProducts($id) {
-        return $id;
+        $products = ProductOrder::find($id);
+        return $products;
     }
 
     public function getProduct(Request $request) {
