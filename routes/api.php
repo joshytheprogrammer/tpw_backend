@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +39,11 @@ Route::prefix('order')->group(function () {
   Route::post('/', [OrderController::class, 'handleOrder']);
   Route::get('/{id}', [OrderController::class, 'getOrder']);
   Route::get('/getProducts/{id}', [OrderController::class, 'getProducts']);
+});
+
+Route::prefix('auth')->group(function () {
+  Route::post('/login', [AuthController::class, 'login']);
+  Route::post('/register', [AuthController::class, 'register']);
+  Route::post('/logout', [AuthController::class, 'logout']);
+  Route::post('/refresh', [AuthController::class, 'refresh']);
 });
