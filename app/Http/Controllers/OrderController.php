@@ -118,8 +118,10 @@ class OrderController extends Controller
         return $products;
     }
 
-    public function getProduct(Request $request) {
+    public function getProduct($id) {
+        $product = Product::select(['_id','thumbnail', 'name', '_slug'])->where('_id', 'like', '%'.$id.'%')->get();
         
+        return new ProductsResource($product);
     }
 
     protected function getPaymentUrl($data) {
