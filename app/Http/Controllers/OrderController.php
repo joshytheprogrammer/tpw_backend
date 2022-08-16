@@ -79,6 +79,7 @@ class OrderController extends Controller
             $order->status = $status;
             $order->payment_mode = $p_m;
             $order->fulfillment = $fulfillment;
+            $order->created_at = time();
             $order->save();
 
         # Insert individual products to table after response...
@@ -111,6 +112,18 @@ class OrderController extends Controller
 
     public function getOrder($id) {
         $order = Order::find($id);
+
+        $response = [
+            "id"=> "e09c674b5c3816be",
+            "customer_phone"=> "08062338622",
+            "products"=> "[\"gwer435t\", \"flr34tnb\"]",
+            "amount"=> 51520,
+            "status"=> "awaiting_payment",
+            "payment_mode"=> "online",
+            "fulfillment"=> "pickup",
+            "created_at"=> date("d-M-Y h:i a", 1659716435),
+            "updated_at"=> date("d-M-Y h:i a", 1662308435)
+        ];  
         return $order;
     }
 

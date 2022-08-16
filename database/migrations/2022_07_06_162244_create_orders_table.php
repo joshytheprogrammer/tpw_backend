@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('status')->comment('the status of the order [awaiting_payment, pending, awaiting_delivery/pickup, successful or cancelled]');
             $table->string('payment_mode')->comment('online or offline');
             $table->string('fulfillment')->comment('pickup or delivery');
-            $table->timestamps();
+            $table->string('created_at')->comment('the current date of the order');
         });
     }
 
