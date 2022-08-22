@@ -35,11 +35,11 @@ class OrderPayments implements ShouldQueue
     {
         $data = $this->data;
 
-        $payment = new Payment;
+        $payment = new OrderPayment;
 
         $payment->order_id = $data["order_id"];
         $payment->url = $data["url"];
-        $payment->ref = $data["reference"];
+        $payment->ref = $data["ref"];
 
         $payment->save();
     }

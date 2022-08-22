@@ -110,7 +110,14 @@ class OrderController extends Controller
             $url = $this->getPaymentUrl($data);
 
         # Insert Payment data into "order_payments" table
-            
+            $data = [
+                "order_id" => $order_id,
+                "url" => $url, 
+                "ref" => $reference
+            ];
+
+            // Insert data after response
+            OrderPayments::dispatchAfterResponse($data);
             
         return response(["order_id" => $order_id ,"url" => $url, "ref" => $reference], 200);
     }
