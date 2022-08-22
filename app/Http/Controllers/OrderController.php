@@ -8,6 +8,7 @@ use App\Models\Config;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductOrder;
+use App\Models\OrderPayment;
 use Illuminate\Http\Resources\Json\JsonResource as ProductsResource;
 use Iamolayemi\Paystack\Facades\Paystack;
 use Exception;
@@ -108,7 +109,8 @@ class OrderController extends Controller
             
             $url = $this->getPaymentUrl($data);
 
-        # Insert Payment Date into "order_payments" table
+        # Insert Payment data into "order_payments" table
+            
             
         return response(["order_id" => $order_id ,"url" => $url, "ref" => $reference], 200);
     }
