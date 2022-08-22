@@ -103,15 +103,22 @@ class OrderController extends Controller
                 "amount" => ($amount * 100), // amount required in kobo
                 "reference" => $reference,
                 "orderID" => $order_id,
+                "callback_url" => route('callback')
             ];
             
             $url = $this->getPaymentUrl($data);
 
-        return response(["order_id" => $order_id ,"url" => $url], 200);
+        # Insert Payment Date into "order_payments" table
+
+        return response(["order_id" => $order_id ,"url" => $url, "ref" => $reference], 200);
     }
 
     public function getOrder($id) {
         $order = Order::find($id);
+
+        if(!$order) {
+            return response(["error" => "Order not found"], 200);
+        }
 
         $order["created_at"] = date("d-M-Y h:i a", $order["created_at"]);
         
@@ -128,6 +135,23 @@ class OrderController extends Controller
         $product = Product::select(['_id','thumbnail', 'name', '_slug'])->where('_id', 'like', '%'.$id.'%')->get();
         
         return new ProductsResource($product);
+    }
+
+    public function callback() {
+        // get reference  from request
+        $reference = request('reference') ?? request('trxref');
+
+        // verify payment details
+        $payment = Paystack::transaction()->verify($reference)->response('data');
+
+        return $payment;
+        // check payment status
+        if ($payment['status'] == 'success') {
+            // payment is successful
+            // code your business logic here
+        } else {
+            // payment is not successful
+        }
     }
 
     protected function getPaymentUrl($data) {
