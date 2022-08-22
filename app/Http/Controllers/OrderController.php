@@ -149,6 +149,7 @@ class OrderController extends Controller
     public function verifyPayment() {
         // get reference  from request
         $reference = request('reference') ?? request('trxref');
+        $order_id = request('order_id');
 
         // verify payment details
         $payment = Paystack::transaction()->verify($reference)->response('data');
