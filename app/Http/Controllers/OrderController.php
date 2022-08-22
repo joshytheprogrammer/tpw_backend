@@ -103,13 +103,13 @@ class OrderController extends Controller
                 "amount" => ($amount * 100), // amount required in kobo
                 "reference" => $reference,
                 "orderID" => $order_id,
-                "callback_url" => route('callback')
+                "callback_url" => "http://127.0.0.1:3000/order?order_no=$order_id"
             ];
             
             $url = $this->getPaymentUrl($data);
 
         # Insert Payment Date into "order_payments" table
-
+            
         return response(["order_id" => $order_id ,"url" => $url, "ref" => $reference], 200);
     }
 
@@ -137,7 +137,7 @@ class OrderController extends Controller
         return new ProductsResource($product);
     }
 
-    public function callback() {
+    public function verifyPayment() {
         // get reference  from request
         $reference = request('reference') ?? request('trxref');
 
@@ -150,7 +150,7 @@ class OrderController extends Controller
             // payment is successful
             // code your business logic here
         } else {
-            // payment is not successful
+            return;
         }
     }
 

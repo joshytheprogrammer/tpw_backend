@@ -40,7 +40,7 @@ Route::prefix('order')->group(function () {
   Route::get('/{id}', [OrderController::class, 'getOrder']);
   Route::get('/getProduct/{id}', [OrderController::class, 'getProduct']);
   Route::get('/getProducts/{id}', [OrderController::class, 'getProducts']);
-  Route::post('/callback/', [OrderController::class, 'callback'])->name('callback');
+  Route::post('/payment/verify', [OrderController::class, 'verifyPayment']);
 });
 
 Route::prefix('auth')->group(function () {
