@@ -8,7 +8,6 @@ use App\Models\Config;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductOrder;
-use App\Models\OrderPayment;
 use Illuminate\Http\Resources\Json\JsonResource as ProductsResource;
 use Iamolayemi\Paystack\Facades\Paystack;
 use Exception;
