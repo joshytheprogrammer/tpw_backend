@@ -154,13 +154,17 @@ class OrderController extends Controller
         // verify payment details
         $payment = Paystack::transaction()->verify($reference)->response('data');
 
-        return $payment;
         // check payment status
         if ($payment['status'] == 'success') {
-            // payment is successful
-            // code your business logic here
+
+            // Update Order table
+            $order = Order::find($order_id);
+            $order->status = "pending";
+            $order->save();
+
+            return response(["success" => "Payment Verified"], 200);
         } else {
-            return;
+            return response(["error" => "Payment not yet completed"], 200);
         }
     }
 
