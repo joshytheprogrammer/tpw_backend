@@ -8,7 +8,7 @@ use App\Models\Config;
 class ConfigController extends Controller
 {
     public function getFormat($id) {
-        $format = Config::select(['format', "configurable"])->where('product_id', 'like', '%'.$id.'%')->get();
+        $format = Config::select(['format', "configuration"])->where('product_id', 'like', '%'.$id.'%')->get();
         return $format;
     }
 
@@ -20,7 +20,7 @@ class ConfigController extends Controller
         $size = $request['size'];
 
         $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
-        
+
         $base_price = $config->base_price;
         // 7000
 
@@ -37,7 +37,7 @@ class ConfigController extends Controller
         $size = $data['size'];
 
         $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
-        
+
         $base_price = $config->base_price;
         // 7000
 

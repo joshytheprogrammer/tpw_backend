@@ -22,33 +22,33 @@ class ConfigSeeder extends Seeder
                 'product_id' => 'gwer435t',
                 'format' => json_encode(["size" => "10", "type" => "sc"]),
                 'base_price' => '20500',
-                'configurable' => true,
+                'configuration' => true,
             ],
             [
                 'product_id' => 'flr34tnb',
                 'format' => json_encode(["size" => "10", "type" => "rv"]),
                 'base_price' => '14000',
-                'configurable' => true,
+                'configuration' => true,
             ],
             [
                 'product_id' => 'reft45th',
                 'format' => json_encode(["size" => "10", "type" => "sc"]),
                 'base_price' => '13500',
-                'configurable' => true,
+                'configuration' => true,
             ],
             [
                 'product_id' => 'f5643g0b',
                 'format' => json_encode(["size" => "10", "type" => "cc"]),
                 'base_price' => '16000',
-                'configurable' => true,
+                'configuration' => true,
             ],
             [
                 'product_id' => 'fre456ty',
                 'format' => null,
                 'base_price' => '50000',
-                'configurable' => false,
+                'configuration' => false,
             ]
         ]);
-        
+
     }
 }
