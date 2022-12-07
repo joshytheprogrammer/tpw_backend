@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('product_id');
             $table->json('format')->nullable()->comment('default size, type');
             $table->string('base_price')->comment('the price of the 8 inch sponge version');
-            $table->boolean('configuration')->comment('whether product can be configured. true or false');
+            $table->string('configuration')->comment('returns the configuration of the product. Options are default, wedding, snack etc');
             $table->timestamps();
         });
     }
