@@ -106,19 +106,19 @@ class OrderController extends Controller
                 "orderID" => $order_id,
                 "callback_url" => "http://127.0.0.1:3000/order?order_no=$order_id"
             ];
-            
+
             $url = $this->getPaymentUrl($data);
 
         # Insert Payment data into "order_payments" table
             $data = [
                 "order_id" => $order_id,
-                "url" => $url, 
+                "url" => $url,
                 "ref" => $reference
             ];
 
             // Insert data after response
             OrderPayments::dispatchAfterResponse($data);
-            
+
         return response(["order_id" => $order_id ,"url" => $url, "ref" => $reference], 200);
     }
 
@@ -130,7 +130,7 @@ class OrderController extends Controller
         }
 
         $order["created_at"] = date("d-M-Y h:i a", $order["created_at"]);
-        
+
         return $order;
     }
 
@@ -142,7 +142,7 @@ class OrderController extends Controller
 
     public function getProduct($id) {
         $product = Product::select(['_id','thumbnail', 'name', '_slug'])->where('_id', 'like', '%'.$id.'%')->get();
-        
+
         return new ProductsResource($product);
     }
 
@@ -174,9 +174,9 @@ class OrderController extends Controller
 
     protected function verifyPrice($amount, $product) {
         # Set data
-        $tax = 12; 
+        $tax = 12;
         $price = 0;
-        
+
         # Get the cost of each item
         foreach ($product as $item) {
             $price = $price + $this->getCost($item);
@@ -202,7 +202,7 @@ class OrderController extends Controller
         $size = $data['size'];
 
         $config = Config::select(['base_price'])->where('product_id', 'like', '%'.$product_id.'%')->first();
-        
+
         $base_price = $config->base_price;
         // 7000
 
