@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\CategoryProduct;
 use Illuminate\Http\Resources\Json\JsonResource as CategoriesResource;
+use Illuminate\Http\Resources\Json\JsonResource as ProductsResource;
 
 
 class CategoriesController extends Controller
 {
     public function popular() {
-        $categories = Category::select(['id', 'thumbnail', 'name'])->orderBy('created_at', 'desc')->get();
+        $categories = Category::select(['slug', 'thumbnail', 'name'])->orderBy('created_at', 'desc')->get();
 
         return new CategoriesResource($categories);
     }
@@ -21,6 +23,17 @@ class CategoriesController extends Controller
     }
 
     public function getProducts($slug) {
-        return CategoryProduct::select(['id', 'product_id', 'category_slug'])->where('category_slug', 'like', '%'.$slug.'%')->get();
+        $category_products = CategoryProduct::select(['id', 'product_id', 'category_slug'])->where('category_slug', 'like', '%'.$slug.'%')->get();
+
+        $products = array();
+
+        foreach($category_products as $categoryProduct) {
+            $product_id = $categoryProduct["product_id"];
+
+            $product = Product::select(['_id', '_slug', 'thumbnail', 'name', 'price'])->where('_id', $product_id)->get();
+            array_push($products, $product);
+        }
+
+        return new ProductsResource($products);
     }
 }
