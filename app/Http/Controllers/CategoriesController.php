@@ -10,7 +10,15 @@ class CategoriesController extends Controller
 {
     public function popular() {
         $categories = Category::select(['id', 'thumbnail', 'name'])->orderBy('created_at', 'desc')->get();
-        
+
         return new CategoriesResource($categories);
+    }
+
+    public function all() {
+
+    }
+
+    public function show($slug) {
+
     }
 }
