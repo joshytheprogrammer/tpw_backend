@@ -37,6 +37,8 @@ class CategoriesController extends Controller
             array_push($products, $product);
         }
 
+        shuffle($products);
+
         return new ProductsResource($products);
     }
 }
