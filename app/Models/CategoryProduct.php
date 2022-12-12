@@ -10,4 +10,6 @@ class CategoryProduct extends Model
     use HasFactory;
 
     protected $table = 'category_products';
+
+    public $incrementing = false;
 }
