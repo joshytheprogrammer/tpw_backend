@@ -28,9 +28,12 @@ class CategoriesController extends Controller
         $products = array();
 
         foreach($category_products as $categoryProduct) {
+            // Get product ID
             $product_id = $categoryProduct["product_id"];
 
-            $product = Product::select(['_id', '_slug', 'thumbnail', 'name', 'price'])->where('_id', $product_id)->get();
+            // Get product using product ID
+            $product = Product::select(['_id', '_slug', 'thumbnail', 'name', 'price'])->where('_id', $product_id)->first();
+
             array_push($products, $product);
         }
 
