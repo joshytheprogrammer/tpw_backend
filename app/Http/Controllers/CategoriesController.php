@@ -21,6 +21,6 @@ class CategoriesController extends Controller
     }
 
     public function getProducts($slug) {
-        return CategoryProduct::all();
+        return CategoryProduct::select(['id', 'product_id', 'category_slug'])->where('category_slug', 'like', '%'.$slug.'%')->get();
     }
 }
