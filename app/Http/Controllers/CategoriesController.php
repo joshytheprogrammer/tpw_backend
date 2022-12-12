@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\CategoryProduct;
 use Illuminate\Http\Resources\Json\JsonResource as CategoriesResource;
+
 
 class CategoriesController extends Controller
 {
@@ -18,7 +20,7 @@ class CategoriesController extends Controller
 
     }
 
-    public function getProducts($id) {
-
+    public function getProducts($slug) {
+        return CategoryProduct::all();
     }
 }
