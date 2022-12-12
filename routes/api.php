@@ -30,7 +30,7 @@ Route::prefix('shop')->group(function () {
 });
 
 Route::prefix('categories')->group(function () {
-    Route::get('/{slug}', [CategoriesController::class, 'show']);
+    Route::get('/{slug}/products', [CategoriesController::class, 'getProducts']);
 });
 
 Route::prefix('config')->group(function () {

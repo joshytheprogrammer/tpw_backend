@@ -18,7 +18,7 @@ class CategoriesController extends Controller
 
     }
 
-    public function show($slug) {
+    public function getProducts($slug) {
 
     }
 }
