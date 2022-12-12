@@ -16,8 +16,24 @@ class CategoryProductsSeeder extends Seeder
     {
         DB::table('category_products')->insert([
             [
-                'product_id' => '',
-                'category_id' => ''
+                'product_id' => 'gwer435t',
+                'category_slug' => 'birthday-cakes'
+            ],
+            [
+                'product_id' => 'flr34tnb',
+                'category_slug' => 'birthday-cakes'
+            ],
+            [
+                'product_id' => 'reft45th',
+                'category_slug' => 'birthday-cakes'
+            ],
+            [
+                'product_id' => 'f5643g0b',
+                'category_slug' => 'birthday-cakes'
+            ],
+            [
+                'product_id' => 'fre456ty',
+                'category_slug' => 'wedding-cakes'
             ],
         ]);
     }
