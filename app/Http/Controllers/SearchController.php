@@ -11,13 +11,12 @@ class SearchController extends Controller
     public function search(Request $request) {
         $query = $request["query"];
 
-        $products = $this->searchProductColumns($query);
+        $data = [
+            "products" => $this->searchProductColumns($query),
+            "category" => array(),
+        ];
 
-        return $products;
-    }
-
-    protected function rankSearch() {
-
+        return $data;
     }
 
     protected function searchProductColumns($query) {
