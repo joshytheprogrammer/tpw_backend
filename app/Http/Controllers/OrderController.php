@@ -7,7 +7,9 @@ use App\Jobs\OrderPayments;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\ProductOrder;
+use App\Models\OrderPayment;
 use Illuminate\Http\Resources\Json\JsonResource as ProductsResource;
 use Iamolayemi\Paystack\Facades\Paystack;
 use Exception;
@@ -106,7 +108,7 @@ class OrderController extends Controller
                 "callback_url" => "http://127.0.0.1:3000/order?order_no=$order_id"
             ];
 
-            $url = $this->getPaymentUrl($data);
+            $url = $this->returnPaymentUrl($data);
 
         # Insert Payment data into "order_payments" table
             $data = [
@@ -150,6 +152,10 @@ class OrderController extends Controller
         $reference = request('reference') ?? request('trxref');
         $order_id = request('order_id');
 
+        if(!$reference) {
+            $reference = OrderPayment::select(['ref'])->where('order_id', $order_id)->first()["ref"];
+        }
+
         // verify payment details
         $payment = Paystack::transaction()->verify($reference)->response('data');
 
@@ -167,7 +173,11 @@ class OrderController extends Controller
         }
     }
 
-    protected function getPaymentUrl($data) {
+    public function getPaymentUrl($order_id) {
+        return OrderPayment::select(['url'])->where("order_id", $order_id)->first();
+    }
+
+    protected function returnPaymentUrl($data) {
         return Paystack::transaction()->initialize($data)->authorizationURL();
     }
 

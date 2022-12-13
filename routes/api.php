@@ -50,6 +50,7 @@ Route::prefix('order')->group(function () {
   Route::get('/getProduct/{id}', [OrderController::class, 'getProduct']);
   Route::get('/getProducts/{id}', [OrderController::class, 'getProducts']);
   Route::post('/payment/verify', [OrderController::class, 'verifyPayment']);
+  Route::get('/getPayment/{order_no}', [OrderController::class, 'getPaymentUrl']);
 });
 
 Route::prefix('auth')->group(function () {
