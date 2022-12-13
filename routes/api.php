@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -19,6 +20,10 @@ use App\Http\Controllers\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::prefix('search')->group(function () {
+    Route::post('/', [SearchController::class, 'search']);
+});
 
 Route::prefix('home')->group(function () {
   Route::get('/recommended', [ProductsController::class, 'recommended']);
